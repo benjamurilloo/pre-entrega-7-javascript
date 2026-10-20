@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pre-Entrega 7 - Simulador de Cuotas</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script defer src="./js/main.js"></script>
+</head>
+<body>
+    <header class="encabezado">
+        <h1>Simulador de Cuotas</h1>
+        <p>Elegí en cuántas cuotas pagar cada producto de tu lista. Todos los planes son sin interés.</p>
+    </header>
+
+    <main class="contenedor">
+        <!-- Formulario: los datos del producto nuevo -->
+        <section class="panel">
+            <h2>Agregar un producto</h2>
+            <div class="formulario">
+                <label>
+                    Nombre
+                    <input type="text" id="input-nombre" placeholder="Ej: Tablet">
+                </label>
+                <label>
+                    Categoría
+                    <input type="text" id="input-categoria" placeholder="Ej: Tecnología">
+                </label>
+                <label>
+                    Precio
+                    <input type="number" id="input-precio" placeholder="Ej: 250000" min="1">
+                </label>
+                <label>
+                    Stock
+                    <input type="number" id="input-stock" placeholder="Ej: 4" min="1">
+                </label>
+                <label class="check">
+                    <input type="checkbox" id="check-prioridad">
+                    Es prioridad (va al principio de la lista)
+                </label>
+                <button type="button" id="boton-agregar" class="boton boton-principal">+ Agregar</button>
+            </div>
+        </section>
+
+        <!-- Feedback: acá se muestra el resultado de cada acción -->
+        <p id="mensaje" class="mensaje mensaje-info">👋 Elegí las cuotas de un producto o agregá uno nuevo.</p>
+
+        <!-- Lista: el contenedor vacío donde JavaScript dibuja los productos -->
+        <section class="panel">
+            <div class="barra-lista">
+                <h2>Tu lista de compras</h2>
+                <input type="text" id="input-buscar" placeholder="🔍 Buscar por nombre o categoría">
+            </div>
+            <p id="contador" class="contador"></p>
+            <div id="contenedor-productos" class="grilla"></div>
+        </section>
+
+        <!-- Resumen: total de la lista en cuotas -->
+        <section class="panel resumen">
+            <h2>Total de tu lista</h2>
+            <p class="total" id="total-lista"></p>
+            <label>
+                Pagarlo en
+                <select id="select-cuotas-total"></select>
+            </label>
+            <p class="valor-cuota" id="valor-cuota-total"></p>
+        </section>
+    </main>
+
+    <footer class="pie">
+        <p>Pre-Entrega 7 · Benjamín Murillo</p>
+    </footer>
+</body>
+</html>

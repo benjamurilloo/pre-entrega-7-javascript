@@ -1,0 +1,305 @@
+/* Simulador de Cuotas - Pre-Entrega 7 */
+
+/* Colores del simulador en variables para cambiarlos en un solo lugar */
+:root {
+    --fondo: #eef2f7;
+    --panel: #ffffff;
+    --principal: #4f46e5;
+    --principal-oscuro: #3730a3;
+    --texto: #1f2937;
+    --texto-suave: #6b7280;
+    --borde: #d1d5db;
+    --exito: #16a34a;
+    --exito-fondo: #dcfce7;
+    --error: #dc2626;
+    --error-fondo: #fee2e2;
+    --aviso: #b45309;
+    --aviso-fondo: #fef3c7;
+    --info-fondo: #e0e7ff;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background-color: var(--fondo);
+    color: var(--texto);
+    line-height: 1.5;
+}
+
+/* ===== Encabezado y pie ===== */
+
+.encabezado {
+    background: linear-gradient(135deg, var(--principal), var(--principal-oscuro));
+    color: white;
+    text-align: center;
+    padding: 32px 16px;
+}
+
+.encabezado h1 {
+    font-size: 2rem;
+    margin-bottom: 4px;
+}
+
+.pie {
+    text-align: center;
+    color: var(--texto-suave);
+    padding: 24px 16px;
+    font-size: 0.9rem;
+}
+
+/* ===== Layout ===== */
+
+.contenedor {
+    max-width: 1000px;
+    margin: 24px auto;
+    padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.panel {
+    background-color: var(--panel);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.panel h2 {
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+    color: var(--principal-oscuro);
+}
+
+/* ===== Formulario ===== */
+
+.formulario {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    align-items: end;
+}
+
+label {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 0.9rem;
+    color: var(--texto-suave);
+}
+
+label.check {
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+    padding: 8px 10px;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    font-size: 1rem;
+    color: var(--texto);
+}
+
+input:focus,
+select:focus {
+    outline: 2px solid var(--principal);
+    border-color: var(--principal);
+}
+
+/* ===== Botones ===== */
+
+.boton {
+    padding: 8px 14px;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.boton-principal {
+    background-color: var(--principal);
+    color: white;
+    font-weight: bold;
+}
+
+.boton-principal:hover {
+    background-color: var(--principal-oscuro);
+}
+
+.boton-comprar {
+    background-color: var(--exito);
+    color: white;
+}
+
+.boton-descuento {
+    background-color: var(--aviso-fondo);
+    color: var(--aviso);
+}
+
+.boton-eliminar {
+    background-color: var(--error-fondo);
+    color: var(--error);
+}
+
+.boton:disabled {
+    background-color: var(--borde);
+    color: var(--texto-suave);
+    cursor: not-allowed;
+}
+
+/* ===== Mensaje de feedback ===== */
+
+.mensaje {
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-weight: 500;
+    border-left: 5px solid;
+}
+
+.mensaje-info {
+    background-color: var(--info-fondo);
+    border-color: var(--principal);
+}
+
+.mensaje-exito {
+    background-color: var(--exito-fondo);
+    border-color: var(--exito);
+}
+
+.mensaje-error {
+    background-color: var(--error-fondo);
+    border-color: var(--error);
+}
+
+.mensaje-aviso {
+    background-color: var(--aviso-fondo);
+    border-color: var(--aviso);
+}
+
+/* ===== Lista de productos ===== */
+
+.barra-lista {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.barra-lista h2 {
+    margin-bottom: 0;
+}
+
+#input-buscar {
+    flex: 1;
+    max-width: 320px;
+    min-width: 200px;
+}
+
+.contador {
+    color: var(--texto-suave);
+    font-size: 0.9rem;
+    margin: 8px 0 12px;
+}
+
+.grilla {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+}
+
+.tarjeta {
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background-color: var(--panel);
+}
+
+.tarjeta h3 {
+    font-size: 1.1rem;
+}
+
+.categoria {
+    align-self: flex-start;
+    background-color: var(--info-fondo);
+    color: var(--principal-oscuro);
+    font-size: 0.75rem;
+    padding: 2px 8px;
+    border-radius: 999px;
+}
+
+.precio {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--principal);
+}
+
+.stock {
+    color: var(--texto-suave);
+    font-size: 0.9rem;
+}
+
+.valor-cuota {
+    font-weight: 600;
+    color: var(--exito);
+}
+
+.acciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+/* Tarjeta sin stock: se ve apagada */
+.sin-stock {
+    opacity: 0.6;
+}
+
+/* Resaltado: la tarjeta del último producto que cambió */
+.resaltado {
+    border: 2px solid var(--principal);
+    animation: destacar 1.5s ease-out;
+}
+
+@keyframes destacar {
+    from {
+        background-color: var(--info-fondo);
+    }
+    to {
+        background-color: var(--panel);
+    }
+}
+
+.lista-vacia {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: var(--texto-suave);
+    padding: 24px;
+}
+
+/* ===== Resumen ===== */
+
+.resumen label {
+    max-width: 200px;
+    margin: 8px 0;
+}
+
+.total {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: var(--principal-oscuro);
+}
